@@ -1,4 +1,4 @@
 package com.secure.secure;
 
-public class hi {
+public class Hi {
 }
