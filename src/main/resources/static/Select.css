@@ -1,0 +1,148 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #18181B;
+    background-color: #F9FAFB;
+    line-height: 1.6;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-weight: bold;
+    color: #18181B;
+}
+
+.menu a, .auth a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: #18181B;
+}
+
+.signup {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.content {
+    display: flex;
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.sidebar {
+    flex: 1;
+    max-width: 300px;
+    padding: 20px;
+}
+
+.dropdown-label {
+    font-size: 14px;
+    color: #52525B;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.dropdown {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.upload-section {
+    margin-top: 20px;
+}
+
+.upload-section label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.upload-box {
+    border: 2px dashed #E5E7EB;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    color: #6B7280;
+    font-size: 14px;
+}
+
+.upload-button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.main-content {
+    flex: 2;
+    padding: 20px;
+}
+
+.notification {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.notification-icon {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.notification-content {
+    flex-grow: 1;
+}
+
+.notification-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.notification-time {
+    font-size: 12px;
+    color: #6B7280;
+}
+
+.image-preview {
+    background-color: #F9FAFB;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.image-preview img {
+    width: 100%;
+    height: auto;
+}
