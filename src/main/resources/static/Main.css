@@ -1,0 +1,107 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #18181B;
+    line-height: 1.6;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.logo {
+    font-weight: bold;
+}
+
+.menu a, .auth a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: #18181B;
+}
+
+.signup {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.small-title {
+    font-size: 16px;
+    color: #52525B;
+}
+
+h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin: 20px 0;
+}
+
+.highlight {
+    background: linear-gradient(to right, #43BBFF, #43B0FF);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.buttons {
+    margin: 20px 0;
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.primary {
+    background-color: #000;
+    color: #fff;
+    margin-right: 10px;
+}
+
+.secondary {
+    background-color: transparent;
+    color: #000;
+    border: 1px solid #000;
+}
+
+.subtitle {
+    color: #71717A;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.dashboard-preview {
+    text-align: center;
+    margin: 40px 0;
+    background-image: url('C:\Users\isk06\Desktop\secure\src\main\resources\static\images\1.jpeg'); /* 이미지 배경 설정 */
+    background-size: cover; /* 이미지가 섹션을 꽉 채우도록 설정 */
+    background-position: center; /* 이미지 중앙 배치 */
+    height: 400px; /* 높이 설정 */
+    border-radius: 10px;
+    box-shadow: 0px 24px 164px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dashboard-preview img {
+    display: none; /* HTML img 태그는 숨김 */
+}
