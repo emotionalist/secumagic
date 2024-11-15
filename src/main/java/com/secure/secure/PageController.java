@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class PageController {
 
-    @GetMapping("/Main")
+    @GetMapping("/main")
     public String mainPage() {
         return "Main";  // Main.jsp 또는 main.html 파일을 찾음
     }
 
-    @GetMapping("/Select")
-    public String createAccountPage() {
+    @GetMapping("/select")
+    public String selectPage() {
         return "Select";
     }
 
