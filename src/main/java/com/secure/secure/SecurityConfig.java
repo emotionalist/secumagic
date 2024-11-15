@@ -1,4 +1,4 @@
-package security;
+package com.secure.secure;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +12,7 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
-                                .requestMatchers("/main", "/css/**", "/js/**", "/images/**", "/createAccount", "/register", "/Select","/generateInviteCode").permitAll()
+                                .requestMatchers("/Main", "/css/**", "/js/**", "/images/**", "/createAccount", "/register", "/Select").permitAll()
                                 .anyRequest().authenticated()
                 )
                 .formLogin(formLogin ->
