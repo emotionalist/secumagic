@@ -24,18 +24,20 @@
 
 <main class="content">
   <section class="sidebar">
-    <label for="industry" class="dropdown-label">industry</label>
+    <label for="industry" class="dropdown-label">산업 분야</label>
     <select id="industry" class="dropdown">
-      <option>Olivia Rhye</option>
-      <option>Phoenix Baker</option>
-      <option>Lana Steiner</option>
-      <option>Demi Wilkinson</option>
-      <option>Candice Wu</option>
-      <option>Natali Craig</option>
-      <option>Drew Cano</option>
+      <option>교육</option>
+      <option>제조</option>
+      <option>IT</option>
+      <option>에너지</option>
+      <option>법률</option>
+      <option>금융</option>
+      <option>의료</option>
+      <option>정부</option>
+      <option>항공</option>
     </select>
 
-    <label for="team-member-select2" class="dropdown-label">Select team member 2</label>
+    <label for="team-member-select2" class="dropdown-label">Select Team Member 2</label>
     <select id="team-member-select2" class="dropdown">
       <option>Olivia Rhye</option>
       <option>Phoenix Baker</option>
@@ -46,7 +48,7 @@
       <option>Drew Cano</option>
     </select>
 
-    <label for="team-member-select3" class="dropdown-label">Select team member 3</label>
+    <label for="team-member-select3" class="dropdown-label">Select Team Member 3</label>
     <select id="team-member-select3" class="dropdown">
       <option>Olivia Rhye</option>
       <option>Phoenix Baker</option>
@@ -60,7 +62,7 @@
     <div class="upload-section">
       <label>Upload Resume</label>
       <div class="upload-box">
-        <p>Browse and chose the files you want to upload from your computer</p>
+        <p>Browse and choose the files you want to upload from your computer</p>
         <button class="upload-button">+</button>
       </div>
     </div>
@@ -76,7 +78,7 @@
       <span class="notification-time">34m ago</span>
     </div>
     <div class="image-preview">
-      <img src="images/space-needle.jpg" alt="Space Needle">
+      <img th:src="@{/images/space-needle.jpg}" alt="Space Needle">
     </div>
   </section>
 </main>
