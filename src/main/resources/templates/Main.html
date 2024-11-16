@@ -11,7 +11,7 @@
 <body>
 <header>
     <nav class="navbar">
-        <div class="logo">SecuMagic</div>
+        <div class="logo"><a href="#hero-section">SecuMagic</a></div>
         <div class="menu">
             <a href="#features-section">기술</a>
             <a href="#pricing-section">서비스</a>
@@ -33,13 +33,14 @@
             <h1><span class="highlight">접근하기 망설여지는 보안 인프라<br>
                                         저희가 컨설팅해드리겠습니다.</span></h1>
             <div class="buttons">
-                <button class="btn primary">Enter solution</button>
+                <!-- Select 페이지로 이동 -->
+                <button type="button" onclick="gotoselect()" class="gotoselect" >Enter solution</button>
             </div>
             <p class="subtitle">Demo version</p>
         </div>
     </section>
 
-    <!-- Features Section (기술) -->
+    <!-- Features Section -->
     <section id="features-section" class="features">
         <div class="features-background"></div>
         <div class="features-content">
@@ -51,15 +52,28 @@
         </div>
     </section>
 
-    <!-- Placeholder Sections -->
-    <section id="pricing-section" style="height: 100vh; background-color: #e4e4e4; display: flex; align-items: center; justify-content: center;">
-        <h2>서비스</h2>
-        <p>네트워크 토폴로지 분석으로 추가 장비 및 방어 체계를 제안합니다.</p>
+    <!-- Services Section -->
+    <section id="pricing-section" class="services">
+        <div class="services-background"></div>
+        <div class="services-content">
+            <h2>네트워크 토폴로지 분석</h2>
+            <p>
+                네트워크 구성도를 분석하여 취약점을 식별하고<br>
+                추가적인 장비 배치 및 방어 체계를 개선합니다.
+            </p>
+        </div>
     </section>
 
-    <section id="automation-section" style="height: 100vh; background-color: #d4d4d4; display: flex; align-items: center; justify-content: center;">
-        <h2>솔루션</h2>
-        <p>기업의 산업 분류와 매출 규모에 맞는 최적의 솔루션을 추천합니다.</p>
+    <!-- Solution Section -->
+    <section id="automation-section" class="solution">
+        <div class="solution-background"></div>
+        <div class="solution-content">
+            <h2>기업 맞춤형 보안 솔루션 추천</h2>
+            <p>
+                기업의 산업 분류와 매출 규모를 바탕으로<br>
+                최적의 보안 솔루션을 자동으로 추천합니다.
+            </p>
+        </div>
     </section>
 </main>
 
@@ -80,6 +94,9 @@
             }
         });
     });
+    function gotoselect(){
+    window.location.href = "/select";
+    }
 </script>
 </body>
 </html>
