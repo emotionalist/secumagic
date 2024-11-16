@@ -41,7 +41,7 @@ body {
     cursor: pointer;
 }
 
-/* 히어로 섹션 */
+/* Hero 섹션 */
 .hero {
     position: relative;
     height: 100vh; /* 화면 전체 높이 */
@@ -58,12 +58,11 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('/images/solution.jpg');
- /* 점과 선이 연결된 배경 이미지 */
+    background: url('/images/solution.jpg'); /* 배경 이미지 */
     background-size: cover;
-    animation: fadeIn 2s ease-in-out infinite alternate; /* 부드러운 애니메이션 */
+    animation: fadeIn 2s ease-in-out infinite alternate;
     opacity: 0.1;
-    z-index: 0; /* 텍스트 뒤 배경 */
+    z-index: 0;
 }
 
 @keyframes fadeIn {
@@ -77,12 +76,12 @@ body {
 
 .hero-content {
     text-align: center;
-    z-index: 1; /* 텍스트가 배경 위로 표시 */
+    z-index: 1;
 }
 
 .small-title {
     font-size: 16px;
-    color: #d4d4d4; /* 밝은 회색 */
+    color: #d4d4d4;
 }
 
 h1 {
@@ -120,4 +119,48 @@ h1 {
     color: #bbb;
     font-size: 14px;
     margin-top: 10px;
+}
+
+/* Features 섹션 */
+.features {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+}
+
+.features-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/images/langchain.jpg'); /* langchain.jpg 배경 */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.4;
+    z-index: 0;
+}
+
+.features-content {
+    z-index: 1;
+    padding: 20px;
+}
+
+.features-content h2 {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    line-height: 1.4;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8); /* 텍스트 가독성을 위한 그림자 */
+}
+
+.features-content p {
+    font-size: 18px;
+    line-height: 1.6;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8); /* 텍스트 가독성을 위한 그림자 */
 }
