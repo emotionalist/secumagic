@@ -10,15 +10,6 @@
 <header>
   <nav class="navbar">
     <div class="logo">/RAREBLOCKS</div>
-    <div class="menu">
-      <a href="#">Features</a>
-      <a href="#">Pricing</a>
-      <a href="#">Automation</a>
-    </div>
-    <div class="auth">
-      <a href="#">Customer Login</a>
-      <button class="signup">Sign up</button>
-    </div>
   </nav>
 </header>
 
@@ -82,5 +73,36 @@
     </div>
   </section>
 </main>
+
+<script>
+  $(document).ready(function() {
+    $('#submit-button').click(function() {
+      const industry = $('#industry').val();
+      const member2 = $('#team-member-select2').val();
+      const member3 = $('#team-member-select3').val();
+
+      const requestData = {
+        industry: industry,
+        member2: member2,
+        member3: member3
+      };
+
+      // AJAX 요청 전송
+      $.ajax({
+        url: '/processData',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(requestData),
+        success: function(response) {
+          // 서버에서 받은 응답 데이터를 업데이트
+          $('#response-text').text(response);
+        },
+        error: function() {
+          $('#response-text').text('An error occurred while processing your request.');
+        }
+      });
+    });
+  });
+</script>
 </body>
 </html>
