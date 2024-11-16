@@ -16,7 +16,7 @@
 </header>
 
 <main class="content">
-  <section class="sidebar"> <!--  입력한 폼의 내용을 서버측으로 전달  -->
+  <section class="sidebar">
     <label for="industry" class="dropdown-label">산업 분야</label>
     <select id="industry" class="dropdown">
       <option>교육</option>
@@ -52,7 +52,7 @@
       <option>Drew Cano</option>
     </select>
 
- <div class="upload-section"> <!--    서버에서 받은 내용을 출력-->
+    <div class="upload-section">
       <label>Upload Resume</label>
       <div class="upload-box">
         <p>Browse and choose the files you want to upload from your computer</p>
@@ -66,27 +66,25 @@
     <div class="notification">
       <div class="notification-content">
         <h3 class="notification-title">Notification Title</h3>
-        <p>Here's notification text.</p>
+        <p id="response-text">Here's notification text.</p>
       </div>
       <span class="notification-time">34m ago</span>
     </div>
-<!--    <div class="image-preview">-->
-<!--      <img th:src="@{/images/space-needle.jpg}" alt="Space Needle">-->
-<!--    </div>-->
-
   </section>
 </main>
 
+<!-- JavaScript 코드 -->
 <script>
   $(document).ready(function() {
     console.log("jQuery is loaded and ready!");
+
     $('#submit-button').click(function() {
       const industry = $('#industry').val();
       const member2 = $('#team-member-select2').val();
       const member3 = $('#team-member-select3').val();
       const fileInput = $('#fileInput')[0].files[0];
 
-      // 파일이 선택되지 않은 경우 경고
+      // 파일이 선택되지 않은 경우 경고 메시지 표시
       if (!fileInput) {
         alert("Please select a file to upload.");
         return;
@@ -104,14 +102,32 @@
         url: '/processData',
         type: 'POST',
         data: formData,
-        contentType: false, <!--// Content-Type 을 multipart/form-data로 자동 설정-->
-        processData: false,   // 데이터를 쿼리 문자열로 변환하지 않음
+        contentType: false,
+        processData: false,
         success: function(response) {
-          alert("Data submitted successfully!");
-          $('#response-text').text(response);
+
+          // 서버 응답이 JSON인 경우 처리
+          try {
+            const jsonResponse = typeof response === "string" ? JSON.parse(response) : response;
+
+            // 응답 데이터를 main-content 섹션에 출력
+            const resultHtml = `
+              <h3>Submission Result</h3>
+              <p>Industry: ${jsonResponse.industry}</p>
+              <p>Team Member 2: ${jsonResponse.member2}</p>
+              <p>Team Member 3: ${jsonResponse.member3}</p>
+              <p>Uploaded File: ${jsonResponse.fileName}</p>
+            `;
+            $('.main-content .notification-content').html(resultHtml);
+            alert("Data submitted successfully!");
+          } catch (error) {
+            alert("Failed to parse server response.");
+            console.error("Parsing error:", error);
+          }
         },
-        error: function() {
-          alert("An error occurred while processing your request.");
+        error: function(xhr, status, error) {
+          console.error("Error details:", xhr.responseText);
+          alert(`An error occurred: ${xhr.status} - ${xhr.statusText}`);
         }
       });
     });
