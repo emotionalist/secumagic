@@ -1,11 +1,12 @@
 package com.secure.secure;
 
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Map;
 
@@ -23,18 +24,22 @@ public class PageController {
     }
 
     @PostMapping("/processData")
-    public String processData(@RequestBody Map<String, String> requestData) {
-        String industry = requestData.get("industry");
-        String member2 = requestData.get("member2");
-        String member3 = requestData.get("member3");
+    @ResponseBody
+    public ResponseEntity<String> processData(
+            @RequestParam("industry") String industry,
+            @RequestParam("member2") String member2,
+            @RequestParam("member3") String member3,
+            @RequestParam("file") MultipartFile file) {
 
-        // 간단한 로직 예시
-        String responseMessage = "Selected Industry: " + industry + ", Team Member 2: " + member2 + ", Team Member 3: " + member3;
+        if (file.isEmpty()) {
+            return new ResponseEntity<>("No file selected", HttpStatus.BAD_REQUEST);
+        }
 
-        // OpenAI API와 연동할 경우, 여기서 API 호출을 수행할 수 있습니다.
-        // String responseMessage = openAIClient.getChatCompletion(responseMessage);
+        // 간단한 응답 메시지 생성
+        String responseMessage = String.format("Industry: %s, Team Member 2: %s, Team Member 3: %s. File uploaded: %s",
+                industry, member2, member3, file.getOriginalFilename());
 
-        return responseMessage;
+        return new ResponseEntity<>(responseMessage, HttpStatus.OK);
     }
 
 }
