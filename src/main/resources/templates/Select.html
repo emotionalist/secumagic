@@ -3,138 +3,101 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" th:href="@{/css/Select.css}" />
-  <title>Profile Selection</title>
-  <!-- jQuery 라이브러리 추가 -->
+  <link rel="stylesheet" type="text/css" href="css/Select.css" />
+  <title>SecuMagic - 보안 솔루션</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <header>
   <nav class="navbar">
-    <div class="logo">/RAREBLOCKS</div>
+    <div class="logo">
+      <a href="/main">SecuMagic</a>
+    </div>
   </nav>
 </header>
 
-<main class="content">
-  <section class="sidebar">
-    <label for="industry" class="dropdown-label">산업 분야</label>
-    <select id="industry" class="dropdown">
-      <option>교육</option>
-      <option>제조</option>
-      <option>IT</option>
-      <option>에너지</option>
-      <option>법률</option>
-      <option>금융</option>
-      <option>의료</option>
-      <option>정부</option>
-      <option>항공</option>
-    </select>
+<main>
+  <h1 class="page-title">기업 맞춤형 보안 솔루션</h1>
+  <div class="content">
+    <section class="sidebar">
+      <label for="industry" class="dropdown-label">산업 분야</label>
+      <select id="industry" class="dropdown">
+        <option>교육</option>
+        <option>제조</option>
+        <option>IT</option>
+        <option>에너지</option>
+        <option>법률</option>
+        <option>금융</option>
+        <option>의료</option>
+        <option>정부</option>
+        <option>항공</option>
+      </select>
 
-    <label for="team-member-select2" class="dropdown-label">Select Team Member 2</label>
-    <select id="team-member-select2" class="dropdown">
-      <option>Olivia Rhye</option>
-      <option>Phoenix Baker</option>
-      <option>Lana Steiner</option>
-      <option>Demi Wilkinson</option>
-      <option>Candice Wu</option>
-      <option>Natali Craig</option>
-      <option>Drew Cano</option>
-    </select>
+      <label for="company-size" class="dropdown-label">회사 규모</label>
+      <input type="number" id="company-size" class="input-field" placeholder="숫자만 입력하세요" />
 
-    <label for="team-member-select3" class="dropdown-label">Select Team Member 3</label>
-    <select id="team-member-select3" class="dropdown">
-      <option>Olivia Rhye</option>
-      <option>Phoenix Baker</option>
-      <option>Lana Steiner</option>
-      <option>Demi Wilkinson</option>
-      <option>Candice Wu</option>
-      <option>Natali Craig</option>
-      <option>Drew Cano</option>
-    </select>
-
-    <div class="upload-section">
-      <label>Upload Resume</label>
-      <div class="upload-box">
-        <p>Browse and choose the files you want to upload from your computer</p>
-        <input type="file" id="fileInput">
+      <label for="architecture-link" class="dropdown-label">아키텍처 토폴로지 도구</label>
+      <div class="link-box">
+        <a href="https://www.microsoft365.com/template/Visio/?culture=en-us&country=us&categoryId=TemplateCategory_BasicNetworkDiagram"
+           target="_blank">
+          <img src="images/visio.jpg" alt="Visio Template" class="visio-image" />
+        </a>
       </div>
-    </div>
-    <button id="submit-button" class="submit-button">Submit</button>
-  </section>
 
-  <section class="main-content">
-    <div class="notification">
-      <div class="notification-content">
-        <h3 class="notification-title">Notification Title</h3>
-        <p id="response-text">Here's notification text.</p>
+      <div class="upload-section">
+        <label>Upload Resume</label>
+        <div class="upload-box">
+          <p>Browse and choose the files you want to upload from your computer</p>
+          <input type="file" id="fileInput">
+        </div>
       </div>
-      <span class="notification-time">34m ago</span>
-    </div>
-  </section>
+
+      <button id="submit-button" class="submit-button">Submit</button>
+    </section>
+
+    <section class="main-content">
+      <div class="notification">
+        <div class="notification-content">
+          <h3 class="notification-title">Notification Title</h3>
+          <p>Here's notification text.</p>
+        </div>
+      </div>
+    </section>
+  </div>
 </main>
 
-<!-- JavaScript 코드 -->
 <script>
-  $(document).ready(function() {
-    console.log("jQuery is loaded and ready!");
-
-    $('#submit-button').click(function() {
+  $(document).ready(function () {
+    $('#submit-button').click(function () {
       const industry = $('#industry').val();
-      const member2 = $('#team-member-select2').val();
-      const member3 = $('#team-member-select3').val();
+      const companySize = $('#company-size').val();
       const fileInput = $('#fileInput')[0].files[0];
 
-      // 파일이 선택되지 않은 경우 경고 메시지 표시
       if (!fileInput) {
         alert("Please select a file to upload.");
         return;
       }
 
-      // FormData 객체 생성
       const formData = new FormData();
       formData.append("industry", industry);
-      formData.append("member2", member2);
-      formData.append("member3", member3);
+      formData.append("companySize", companySize);
       formData.append("file", fileInput);
 
-      // AJAX 요청 전송
       $.ajax({
         url: '/processData',
         type: 'POST',
         data: formData,
         contentType: false,
         processData: false,
-        success: function(response) {
-
-          // 서버 응답이 JSON인 경우 처리
-          try {
-            const jsonResponse = typeof response === "string" ? JSON.parse(response) : response;
-
-            // 응답 데이터를 main-content 섹션에 출력
-            const resultHtml = `
-              <h3>Submission Result</h3>
-              <p>Industry: ${jsonResponse.industry}</p>
-              <p>Team Member 2: ${jsonResponse.member2}</p>
-              <p>Team Member 3: ${jsonResponse.member3}</p>
-              <p>Uploaded File: ${jsonResponse.fileName}</p>
-            `;
-            $('.main-content .notification-content').html(resultHtml);
-            alert("Data submitted successfully!");
-          } catch (error) {
-            alert("Failed to parse server response.");
-            console.error("Parsing error:", error);
-          }
+        success: function (response) {
+          alert("Data submitted successfully!");
         },
-        error: function(xhr, status, error) {
-          console.error("Error details:", xhr.responseText);
-          alert(`An error occurred: ${xhr.status} - ${xhr.statusText}`);
+        error: function () {
+          alert("An error occurred while processing your request.");
         }
       });
     });
   });
-
-
-  // 아니 뭔데
 </script>
 </body>
 </html>
