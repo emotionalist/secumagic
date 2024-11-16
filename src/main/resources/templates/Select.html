@@ -68,36 +68,53 @@
 
 <script>
   $(document).ready(function () {
+    // 문서가 준비되었을 때 실행
     $('#submit-button').click(function () {
-      const industry = $('#industry').val();
-      const companySize = $('#company-size').val();
-      const fileInput = $('#fileInput')[0].files[0];
+      // 제출 버튼 클릭 이벤트 핸들러
 
+      // 입력 필드 값 가져오기
+      const industry = $('#industry').val(); // 산업 분야
+      const companySize = $('#company-size').val(); // 회사 규모
+      const fileInput = $('#fileInput')[0].files[0]; // 업로드된 파일
+
+      // 파일이 선택되지 않은 경우 알림 표시 후 함수 종료
       if (!fileInput) {
-        alert("Please select a file to upload.");
+        alert("Please select a file to upload."); // 파일 선택 경고 메시지
         return;
       }
 
+      // 서버로 전송할 FormData 객체 생성
       const formData = new FormData();
-      formData.append("industry", industry);
-      formData.append("companySize", companySize);
-      formData.append("file", fileInput);
+      formData.append("industry", industry); // 산업 분야 추가
+      formData.append("companySize", companySize); // 회사 규모 추가
+      formData.append("file", fileInput); // 업로드된 파일 추가
 
+      // AJAX 요청을 통해 서버에 데이터 전송
       $.ajax({
-        url: '/processData',
-        type: 'POST',
-        data: formData,
-        contentType: false,
-        processData: false,
+        url: '/processData', // 데이터 전송 URL
+        type: 'POST', // HTTP 메서드: POST
+        data: formData, // 전송할 데이터
+        contentType: false, // 데이터 타입을 자동으로 설정
+        processData: false, // 데이터 직렬화를 하지 않음
         success: function (response) {
-          alert("Data submitted successfully!");
+          // 요청이 성공하면 실행되는 콜백 함수
+          alert("Data submitted successfully!"); // 성공 메시지 표시
+
+          // 응답 데이터를 Notification Title 섹션에 표시
+          $('.notification-title').text(`Industry: ${response.industry}`);
+          $('.notification-content').append(`
+            <p>Company Size: ${response.companySize}</p>
+            <p>File Name: ${response.fileName}</p>
+          `);
         },
         error: function () {
-          alert("An error occurred while processing your request.");
+          // 요청이 실패하면 실행되는 콜백 함수
+          alert("An error occurred while processing your request."); // 에러 메시지 표시
         }
       });
     });
   });
 </script>
+
 </body>
 </html>

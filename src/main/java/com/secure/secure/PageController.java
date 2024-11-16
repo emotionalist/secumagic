@@ -26,21 +26,24 @@ public class PageController {
     @ResponseBody
     public ResponseEntity<Map<String, String>> processData(
             @RequestParam("industry") String industry,
-            @RequestParam("member2") String member2,
-            @RequestParam("member3") String member3,
+            @RequestParam("companySize") int companySize,  // 수정된 변수 이름
             @RequestParam("file") MultipartFile file) {
 
         // 파일이 비어 있는 경우 에러 응답 반환
         if (file.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            Map<String, String> errorResponse = new HashMap<>();
+            errorResponse.put("error", "File upload failed: No file provided.");
+            return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
         }
+
+        // 파일 처리 로직 (예: 파일 이름 반환)
+        String fileName = file.getOriginalFilename();
 
         // 응답 데이터 생성
         Map<String, String> responseData = new HashMap<>();
         responseData.put("industry", industry);
-        responseData.put("member2", member2);
-        responseData.put("member3", member3);
-        responseData.put("fileName", file.getOriginalFilename());
+        responseData.put("companySize", String.valueOf(companySize));
+        responseData.put("fileName", fileName);
 
         // JSON 형식의 응답 반환
         return new ResponseEntity<>(responseData, HttpStatus.OK);
