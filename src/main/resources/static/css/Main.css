@@ -1,15 +1,19 @@
+/* 전체 초기화 */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+/* 본문 스타일 */
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
     color: #18181B;
     line-height: 1.6;
+    background: #0d1117; /* 어두운 배경 */
 }
 
+/* 네비게이션 바 */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -19,12 +23,13 @@ body {
 
 .logo {
     font-weight: bold;
+    color: #ffffff;
 }
 
 .menu a, .auth a {
     margin-right: 20px;
     text-decoration: none;
-    color: #18181B;
+    color: #ffffff;
 }
 
 .signup {
@@ -36,20 +41,55 @@ body {
     cursor: pointer;
 }
 
+/* 히어로 섹션 */
 .hero {
+    position: relative;
+    height: 100vh; /* 화면 전체 높이 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: white;
+}
+
+.network-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/images/solution.jpg');
+ /* 점과 선이 연결된 배경 이미지 */
+    background-size: cover;
+    animation: fadeIn 2s ease-in-out infinite alternate; /* 부드러운 애니메이션 */
+    opacity: 0.1;
+    z-index: 0; /* 텍스트 뒤 배경 */
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0.1;
+    }
+    100% {
+        opacity: 0.3;
+    }
+}
+
+.hero-content {
     text-align: center;
-    padding: 80px 20px;
+    z-index: 1; /* 텍스트가 배경 위로 표시 */
 }
 
 .small-title {
     font-size: 16px;
-    color: #52525B;
+    color: #d4d4d4; /* 밝은 회색 */
 }
 
 h1 {
     font-size: 48px;
     font-weight: 700;
     margin: 20px 0;
+    line-height: 1.4;
 }
 
 .highlight {
@@ -76,32 +116,8 @@ h1 {
     margin-right: 10px;
 }
 
-.secondary {
-    background-color: transparent;
-    color: #000;
-    border: 1px solid #000;
-}
-
 .subtitle {
-    color: #71717A;
+    color: #bbb;
     font-size: 14px;
     margin-top: 10px;
-}
-
-.dashboard-preview {
-    text-align: center;
-    margin: 40px 0;
-    background-image: url('C:\Users\isk06\Desktop\secure\src\main\resources\static\images\1.jpeg'); /* 이미지 배경 설정 */
-    background-size: cover; /* 이미지가 섹션을 꽉 채우도록 설정 */
-    background-position: center; /* 이미지 중앙 배치 */
-    height: 400px; /* 높이 설정 */
-    border-radius: 10px;
-    box-shadow: 0px 24px 164px rgba(0, 0, 0, 0.15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.dashboard-preview img {
-    display: none; /* HTML img 태그는 숨김 */
 }

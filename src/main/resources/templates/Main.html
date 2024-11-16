@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Plus+Jakarta+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/Main.css}" />
+    <link rel="stylesheet" type="text/css" href="css/Main.css" />
     <title>Landing Page</title>
 </head>
 <body>
@@ -26,18 +26,16 @@
 
 <main>
     <section class="hero">
-        <p class="small-title">Cyber security talent training hackathon</p>
-        <h1><span class="highlight">접근하기 망설여지는 보안 인프라<br>
-                                    저희가 컨설팅해드리겠습니다.</span></h1>
-        <div class="buttons">
-            <button class="btn primary">Enter solution</button>
+        <div class="network-background"></div>
+        <div class="hero-content">
+            <p class="small-title">Cyber security talent training hackathon</p>
+            <h1><span class="highlight">접근하기 망설여지는 보안 인프라<br>
+                                        저희가 컨설팅해드리겠습니다.</span></h1>
+            <div class="buttons">
+                <button class="btn primary">Enter solution</button>
+            </div>
+            <p class="subtitle">Demo version</p>
         </div>
-        <p class="subtitle">Demo version</p>
-    </section>
-
-    <section class="dashboard-preview">
-        <!-- 이미지 경로를 /images/1.jpeg로 설정 -->
-        <img src="/images/1.jpeg" alt="Dashboard Preview">
     </section>
 </main>
 </body>
