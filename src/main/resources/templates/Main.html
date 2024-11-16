@@ -13,9 +13,9 @@
     <nav class="navbar">
         <div class="logo">SecuMagic</div>
         <div class="menu">
-            <a href="#">Features</a>
-            <a href="#">Pricing</a>
-            <a href="#">Automation</a>
+            <a href="#features-section">Features</a>
+            <a href="#pricing-section">Pricing</a>
+            <a href="#automation-section">Automation</a>
         </div>
         <div class="auth">
             <a href="#">Customer Login</a>
@@ -25,7 +25,8 @@
 </header>
 
 <main>
-    <section class="hero">
+    <!-- Hero Section -->
+    <section class="hero" id="hero-section">
         <div class="network-background"></div>
         <div class="hero-content">
             <p class="small-title">Cyber security talent training hackathon</p>
@@ -37,6 +38,43 @@
             <p class="subtitle">Demo version</p>
         </div>
     </section>
+
+    <!-- Features Section -->
+    <section id="features-section" style="height: 100vh; background-color: #f4f4f4; display: flex; align-items: center; justify-content: center;">
+        <h2>Features</h2>
+        <p>Our platform offers a wide range of features for your security needs.</p>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing-section" style="height: 100vh; background-color: #e4e4e4; display: flex; align-items: center; justify-content: center;">
+        <h2>Pricing</h2>
+        <p>Choose a pricing plan that fits your organization.</p>
+    </section>
+
+    <!-- Automation Section -->
+    <section id="automation-section" style="height: 100vh; background-color: #d4d4d4; display: flex; align-items: center; justify-content: center;">
+        <h2>Automation</h2>
+        <p>Leverage automation to simplify your security infrastructure.</p>
+    </section>
 </main>
+
+<!-- JavaScript -->
+<script>
+    // 모든 내부 링크에 대해 부드러운 스크롤 추가
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+
+            if (targetSection) {
+                targetSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+</script>
 </body>
 </html>
