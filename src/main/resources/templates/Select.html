@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" th:href="@{/css/Select.css}" />
   <title>Profile Selection</title>
+  <!-- jQuery 라이브러리 추가 -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <header>
@@ -14,7 +16,7 @@
 </header>
 
 <main class="content">
-  <section class="sidebar">
+  <section class="sidebar"> <!--  입력한 폼의 내용을 서버측으로 전달  -->
     <label for="industry" class="dropdown-label">산업 분야</label>
     <select id="industry" class="dropdown">
       <option>교육</option>
@@ -50,13 +52,14 @@
       <option>Drew Cano</option>
     </select>
 
-    <div class="upload-section">
+ <div class="upload-section"> <!--    서버에서 받은 내용을 출력-->
       <label>Upload Resume</label>
       <div class="upload-box">
         <p>Browse and choose the files you want to upload from your computer</p>
         <input type="file" id="upload-button">
       </div>
     </div>
+    <button id="submit-button" class="submit-button">Submit</button>
   </section>
 
   <section class="main-content">
@@ -77,43 +80,43 @@
 <script>
 
   $(document).ready(function() {
-      $('#upload-button').click(function() {
+    $('#submit-button').click(function() {
+      const industry = $('#industry').val();
+      const member2 = $('#team-member-select2').val();
+      const member3 = $('#team-member-select3').val();
       const fileInput = $('#fileInput')[0].files[0];
+
+      // 파일이 선택되지 않은 경우 경고
       if (!fileInput) {
         alert("Please select a file to upload.");
         return;
       }
 
+      // FormData 객체 생성
       const formData = new FormData();
+      formData.append("industry", industry);
+      formData.append("member2", member2);
+      formData.append("member3", member3);
       formData.append("file", fileInput);
-
-    $('#submit-button').click(function() {
-      const industry = $('#industry').val();
-      const member2 = $('#team-member-select2').val();
-      const member3 = $('#team-member-select3').val();
-
-      const requestData = {
-        industry: industry,
-        member2: member2,
-        member3: member3
-      };
 
       // AJAX 요청 전송
       $.ajax({
         url: '/processData',
         type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify(requestData),
+        data: formData,
+        contentType: false, // 기본 contentType 사용 안 함
+        processData: false, // 데이터를 쿼리 문자열로 변환하지 않음
         success: function(response) {
-          // 서버에서 받은 응답 데이터를 업데이트
+          alert("Data submitted successfully!");
           $('#response-text').text(response);
         },
         error: function() {
-          $('#response-text').text('An error occurred while processing your request.');
+          alert("An error occurred while processing your request.");
         }
       });
     });
   });
+
 </script>
 </body>
 </html>
