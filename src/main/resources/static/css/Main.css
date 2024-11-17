@@ -203,23 +203,33 @@ h1 {
 }
 
 .services-content {
-    z-index: 1; /* 텍스트가 배경 위에 표시되도록 */
+    position: absolute; /* 위치를 절대값으로 설정 */
+    top: 50%; /* 세로 기준으로 중앙에서 약간 위 */
+    right: 5%; /* 화면의 오른쪽에서 10%만큼 떨어짐 */
+    transform: translate(0, -50%); /* 세로 중심 정렬 */
+    z-index: 1; /* 텍스트가 배경 위로 보이도록 */
     padding: 20px;
+    text-align: right; /* 텍스트를 오른쪽으로 정렬 */
 }
 
 .services-content h2 {
     font-size: 48px;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     line-height: 1.4;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8); /* 텍스트 가독성을 위한 그림자 */
+    color: white;
+    position: relative;
+    left: 45px; /* 오른쪽으로 이동 */
 }
 
 .services-content p {
     font-size: 18px;
     line-height: 1.6;
     text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8); /* 텍스트 가독성을 위한 그림자 */
+    color: white;
 }
+
 /* Solution 섹션 */
 .solution {
     position: relative;
@@ -247,8 +257,13 @@ h1 {
 }
 
 .solution-content {
-    z-index: 1; /* 텍스트가 배경 위에 표시되도록 */
+    position: absolute; /* 위치를 절대값으로 설정 */
+    top: 30%; /* 화면의 상단에서부터 40% 위치 */
+    left: 50%; /* 가로 중앙 정렬 */
+    transform: translate(-50%, -50%); /* 중심 정렬 */
+    z-index: 1; /* 텍스트가 배경 위로 보이도록 */
     padding: 20px;
+    text-align: center; /* 텍스트 중앙 정렬 */
 }
 
 .solution-content h2 {
@@ -257,13 +272,16 @@ h1 {
     margin-bottom: 20px;
     line-height: 1.4;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8); /* 텍스트 가독성을 위한 그림자 */
+    color: white;
 }
 
 .solution-content p {
     font-size: 18px;
     line-height: 1.6;
     text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8); /* 텍스트 가독성을 위한 그림자 */
+    color: white;
 }
+
 /* 공통 애니메이션 배경 */
 @keyframes gradientAnimation {
     0% {
